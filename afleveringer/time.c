@@ -13,6 +13,7 @@ int main(void){
     printf("Insert amount of seconds: ");
     scanf("%d", &chosenSec);
 
+    //test
     // Converts data
     seconds = chosenSec % 60;
     minutes = (chosenSec / SECONDS_PR_MINUTE) % 60;
