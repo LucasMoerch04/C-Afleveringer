@@ -12,6 +12,7 @@ int main(void){
     do {
         printf("Write a number bigger than 0: ");
         scanf(" %d", &n);
+        
         if (n < MIN_NUMBER){
             printf("Invalid number. Please try again\n");
         }
@@ -24,7 +25,7 @@ int main(void){
             printf("Invalid number. Please try again\n");
         }
     } while(c < MIN_DIGIT || c > MAX_DIGIT);
-   
+
     int counter = 0;
     // Loop through all numbers from 1 up to n
     for (int i = 1; i <= n; i++) {
