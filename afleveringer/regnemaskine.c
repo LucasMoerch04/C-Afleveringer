@@ -17,7 +17,7 @@ int main(void){
     return 0;
 }
 
-double run_calculator(){
+double run_calculator(void){
     double accumulator = 0.0, operand;
     char operator;
 
