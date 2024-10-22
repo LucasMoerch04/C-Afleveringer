@@ -2,11 +2,11 @@
 #include <math.h>
 
 // Initiate prototypes
+
+double run_calculator();
 void scan_data(char *operator, double *operand);
 int isBinaryOperator(char operator);
 void do_next_op(char operator, double operand, double *accumulator);
-double run_calculator();
-
 
 int main(void){
     // Runs calculator
@@ -17,6 +17,20 @@ int main(void){
     return 0;
 }
 
+double run_calculator(){
+    double accumulator = 0.0, operand;
+    char operator;
+
+    // Calculator runs until user types 'q'
+    while(1){
+        scan_data(&operator, &operand);
+        if (operator == 'q'){
+            break;
+        }
+        do_next_op(operator, operand, &accumulator);
+    }
+    return accumulator;
+}
 // Gets inputs from user
 void scan_data(char *operator, double *operand){
     printf("Enter Operator: ");
@@ -76,17 +90,3 @@ void do_next_op(char operator, double operand, double *accumulator){
     printf("Result so far: %lf.\n", *accumulator);
 }
 
-double run_calculator(){
-    double accumulator = 0.0, operand;
-    char operator;
-
-    // Calculator runs until user types 'q'
-    while(1){
-        scan_data(&operator, &operand);
-        if (operator == 'q'){
-            break;
-        }
-        do_next_op(operator, operand, &accumulator);
-    }
-    return accumulator;
-}
