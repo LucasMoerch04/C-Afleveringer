@@ -1,18 +1,20 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 
 // Initiate prototypes
-
 double run_calculator();
 void scan_data(char *operator, double *operand);
 int isBinaryOperator(char operator);
 void do_next_op(char operator, double operand, double *accumulator);
+void print_instructions(void);
 
 int main(void){
+
+    print_instructions();
     // Runs calculator
     printf("Calculator is now running!\nType 'q' to exit.\n");
-    double final_result = run_calculator();
-    printf("Final result is: %lf\n", final_result);
+    run_calculator();
 
     return 0;
 }
@@ -24,9 +26,6 @@ double run_calculator(void){
     // Calculator runs until user types 'q'
     while(1){
         scan_data(&operator, &operand);
-        if (operator == 'q'){
-            break;
-        }
         do_next_op(operator, operand, &accumulator);
     }
     return accumulator;
@@ -83,10 +82,31 @@ void do_next_op(char operator, double operand, double *accumulator){
                 *accumulator = 1 / *accumulator;
             }
             break;
+        // User closes the program by typing 'q'
+        case 'q':
+            printf("Final result is: %lf\n", *accumulator);
+            exit(EXIT_SUCCESS);
         // Gives error message if the operator input is not one of the cases
         default:
             printf("Invalid operator\n");
     }
     printf("Result so far: %lf.\n", *accumulator);
+}
+
+// Function to print the instructions
+void print_instructions(void){
+    printf("\033[0;34m      BINARY OPERATORS:\n"
+        "|+    for addition of the accumulator w/ the operand\n"
+        "|-    for subtraction of the accumulator w/ the operand\n"
+        "|*    for multiplication of the accumulator w/ the operand\n"
+        "|/    for division of the accumulator w/ the operand\n"
+        "|^    for exponentiation of the accumulator w/ the operand\n\n");
+
+    printf("      UNARY OPERATORS:\n"
+        "|#    for the square root of the accumulator\n"
+        "|%%    for reversing the sign of the accumulator\n"
+        "|!    for dividing 1 by the accumulator\n"
+        "|q    for terminating the calculator with the final result\n"
+        "-----------------------------------------------------------------\n\033[0m");
 }
 
