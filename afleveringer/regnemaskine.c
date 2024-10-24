@@ -89,6 +89,7 @@ void do_next_op(char operator, double operand, double *accumulator){
         // Gives error message if the operator input is not one of the cases
         default:
             printf("Invalid operator\n");
+            break;
     }
     printf("Result so far: %lf.\n", *accumulator);
 }
