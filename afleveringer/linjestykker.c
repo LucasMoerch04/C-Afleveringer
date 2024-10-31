@@ -11,7 +11,7 @@ int main(void){
     double xs[] = {0,7,3,8,1};
     double ys[] = {4,0,3,3,5};
     int length = 5;
-    
+
     printf("xs:\n");
     print_numbers(xs, length);
     printf("\nys:\n");
@@ -28,23 +28,23 @@ int main(void){
     return 0;
 }
 
-//Function to print every double in given array
+// Function to print every double in given array
 void print_numbers(double *array, int length){
     for (int i = 0; i < length; i++){
         printf("%lf\n", array[i]);
     }
 }
 
-//Function to print combined points in given arrays
+// Function to print combined points in given arrays
 void print_points(double *xs, double *ys, int length){
     for (int i = 0; i < length; i++){
         printf("(%lf, %lf)\n", xs[i], ys[i]);
     }    
 }
 
-// Function to calculate distances of given points
+// Function to calculate lines made by given points in arrays
 void dists(double *xs, double *ys, int length, double *ds){
-    for (int i = 0; i < length; i++){
+    for (int i = 0; i < length - 1; i++){
         double delta_x = xs[i] - xs[i+1];
         double delta_y = ys[i] - ys[i+1];
         
