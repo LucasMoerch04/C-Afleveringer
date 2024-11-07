@@ -19,12 +19,12 @@ int getAmountInput(void);
 int *roll_multiple_dice(int n);
 int check_for_lower_in_roll(int *rolls, int n, int target);
 int calculate_score(int count, int value);
-void print_scoreboard(char *rounds[], int *scores);
 int check_for_upper_in_roll(int *scores, int *rolls, int n, int round);
 int find_multiples_in_roll(int *rolls, int n, int amount, int ignore);
 int find_straights(int *rolls, int n, int start);
-int compare(const void *a, const void *b);
 int get_sum(int *array, int n);
+int compare(const void *a, const void *b);
+void print_scoreboard(char *rounds[], int *scores);
 
 int main(void){
     char answer = 'y';
@@ -51,7 +51,7 @@ void play_yatzi(void){
         exit(EXIT_FAILURE);
     }
     // Array of round "names"
-    char *rounds[] = {"Ones", "Twos", "Threes", "Fours", "Fives", "Sixes", "Bonus", "One pair", "Two pair", "Three of a kind", "Four of a kind", "Small straight", "Large straight", "Full house", "Chance", "Yatzy"};
+    char *rounds[] = {"Ones", "Twos", "Threes", "Fours", "Fives", "Sixes", "BONUS", "One pair", "Two pair", "Three of a kind", "Four of a kind", "Small straight", "Large straight", "Full house", "Chance", "Yatzy"};
     srand(time(NULL));
 
     printf("\nPrinting dice:\n");
@@ -128,17 +128,6 @@ int check_for_lower_in_roll(int *rolls, int n, int target){
 // Function to return calculated score of round
 int calculate_score(int count, int value){
     return count * value;
-}
-
-// Function to print the final scoreboard
-void print_scoreboard(char *rounds[], int *scores){  
-    printf("\n----------------\n");
-    printf("Score board:\n");
-    for (int i = 0; i < AMOUNT_OF_ROUNDS; i++){
-        printf("%s : %d \n", rounds[i], scores[i]);
-    }
-    printf("\nTOTAL SCORE: %d\n", get_sum(scores, AMOUNT_OF_ROUNDS));
-    printf("----------------\n");
 }
 
 // Function to check for "Uppers" 
@@ -259,4 +248,15 @@ int get_sum(int *array, int n){
 // Function to compare two numbers for the qsort()
 int compare(const void *a, const void *b) {
     return (*(int *)a - *(int *)b);
+}
+
+// Function to print the final scoreboard
+void print_scoreboard(char *rounds[], int *scores){  
+    printf("\n----------------\n");
+    printf("Score board:\n");
+    for (int i = 0; i < AMOUNT_OF_ROUNDS; i++){
+        printf("%s : %d \n", rounds[i], scores[i]);
+    }
+    printf("\nTOTAL SCORE: %d\n", get_sum(scores, AMOUNT_OF_ROUNDS));
+    printf("----------------\n");
 }
