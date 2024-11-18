@@ -2,6 +2,7 @@
 Navn: Lucas Metz Mørch
 Email: lmorch24@student.aau.dk
 Fag: IMPR
+Gruppe: SW1
 Studieretning: Software
 */
 
@@ -132,7 +133,8 @@ int calculate_score(int count, int value){
 
 // Function to check for "Uppers" 
 int check_for_upper_in_roll(int *scores, int *rolls, int n, int round){
-    int score, eyes, three_eyes, pair_eyes;
+    int score = 0;
+    int eyes, three_eyes, pair_eyes;
     switch(round){
         // Bonus
         case 7:
@@ -184,7 +186,9 @@ int check_for_upper_in_roll(int *scores, int *rolls, int n, int round){
             break;
         // Chance
         case 15:
-            score = get_sum(rolls, n);
+            for (int i = 0; i < 5; i++){
+                score += rolls[n - 1 - i];
+            }
             break;
         // YATZY
         case 16:
