@@ -26,7 +26,7 @@ typedef struct Team {
 Match *load_file(void);
 void initialize_team_array(Team *team_array);
 void assign_team_data(Match *match_array, Team *team_array);
-int assign_points(int team1_goals, int team2_goals);
+int assign_points(int teamA_goals, int teamB_goals);
 int compare_teams(const void *a, const void *b);
 void print_scoreboard(Team *team_array);
 
@@ -99,10 +99,10 @@ void assign_team_data(Match *match_array, Team *team_array){
 }
 
 // Returns 3 points for win, 1 for draw, 0 for loss
-int assign_points(int team1_goals, int team2_goals){
-    if (team1_goals > team2_goals){
+int assign_points(int teamA_goals, int teamB_goals){
+    if (teamA_goals > teamB_goals){
         return 3;
-    } else if (team2_goals == team1_goals){
+    } else if (teamB_goals == teamA_goals){
         return 1;
     } else {
         return 0;
