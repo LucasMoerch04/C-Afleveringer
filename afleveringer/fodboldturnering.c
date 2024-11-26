@@ -137,10 +137,9 @@ int compare_teams(const void *a, const void *b) {
 }
 
 void print_scoreboard(Team *team_array){
-    printf("\n%24s\n", "Superligaen 2024-2025");
+    printf("\n%s\n", "Superligaen 2024-2025");
     printf("-------------------------------\n");
     printf("| %-7s %-7s %-7s %-3s |\n", "Team", "Points", "GS", "GA");
-
     printf("-------------------------------\n");
 
     for (int i = 0; i < AMOUNT_OF_TEAMS; i++){
