@@ -1,3 +1,11 @@
+/*
+Navn: Lucas Metz Mørch
+Email: lmorch24@student.aau.dk
+Fag: IMPR
+Gruppe: SW1
+Studieretning: Software
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -89,7 +97,7 @@ void assign_team_data(Match *match_array, Team *team_array){
                 team_array[j].goals_scored += match_array[i].team1_goals;
                 team_array[j].goals_against += match_array[i].team2_goals;
 
-            } else if (strcmp(match_array[i].team2, team_array[j].name) == 0){
+            } if (strcmp(match_array[i].team2, team_array[j].name) == 0){
                 team_array[j].points += assign_points(match_array[i].team2_goals, match_array[i].team1_goals);
                 team_array[j].goals_scored += match_array[i].team2_goals;
                 team_array[j].goals_against += match_array[i].team1_goals;
